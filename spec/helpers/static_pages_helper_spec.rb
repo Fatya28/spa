@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
@@ -12,14 +14,4 @@ require 'rails_helper'
 # end
 RSpec.describe StaticPagesHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
-
-  test "should get home" do
-    get :home
-    assert_response :success
-  end
-
-  test "should get help" do
-    get :help
-    assert_response :success
-  end
 end
