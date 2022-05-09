@@ -14,16 +14,27 @@
  */
  @import 'bootstrap';
 
+ a {
+     text-decoration: none;
+    }
+ a:hover {
+     text-decoration: underline;
+    }
+
 .center {
   text-align: center;
+}
+
+.right {
+  text-align: right;
 }
 
 .bg-purple {
   background-color: #8A20B3;
 }
 
-:placeholder-shown {
-  border: 2px solid silver;
+.bg-lavender {
+  background-color: lavender;
 }
 
 /* GLOBAL STYLES
