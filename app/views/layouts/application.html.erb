@@ -19,7 +19,7 @@
         <hr>
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
-            <%= image_tag("label.png", size: "120x70") %>
+            <%= image_tag("label.png", size: "150x70") %>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,13 +27,13 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <%= link_to 'Home', root_path, class: "nav-link mt-3" %></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a href="#contact" class="nav-link mt-3">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <%= link_to 'Link2', root_path, class: "nav-link mt-3" %></a>
               </li>
             </ul>
             <% if user_signed_in? %>
@@ -46,17 +46,34 @@
         </div>
       </nav>
     </header>
-
-
-
-    <%= yield %>
+    <main class="featurette-divider">
+      <%= yield %>
+    </main>
 
     <!-- FOOTER -->
-    <footer class="container">
+    <footer class="container" id="contact">
       <hr class="featurette-divider">
+      <div class="row  text-center">
+        <div class="col">
+          <p class="fw-bold">Location</p>
+          <p>Lavender Spa Salon</p>
+          <p>26700 Beck Rd.</p>
+          <p>Novi, MI 48374</p>
+        </div>
+        <div class="col">
+          <p class="fw-bold">Info</p>
+          <p>Phone: 248.344.9944</p>
+          <p>info@lavenderspa.com</p>
+        </div>
+        <div class="col">
+          <p class="fw-bold">Hours</p>
+          <p>Monday: 10:00AM - 6:00PM</p>
+          <p>Tues-Fri: 9:00AM - 9:00PM</p>
+          <p>Sat: 8:30AM - 5:00PM</p>
+          <p>Sun: Closed</p>
+        </div>
+      </div>
       <p>&copy; 2022–2022 LavenderSpa, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-
-
       <!-- /END THE FEATURETTES -->
     </footer>
   </body>
