@@ -15,32 +15,32 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-inverse bg-inverse navbar-expand-md navbar-dark fixed-top bg-dark">
+      <nav class="navbar navbar-inverse navbar-expand-md navbar-dark fixed-top bg-white">
         <hr>
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            <%= image_tag("label.png", size: "150x70") %>
-          </a>
+
+            <%= image_tag("label.png", size: "100x70") %>
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <%= link_to 'Home', root_path, class: "nav-link mt-3" %></a>
+                <%= link_to 'Home', root_path, class: "nav-link mt-4 text-dark" %></a>
               </li>
               <li class="nav-item">
-                <a href="#contact" class="nav-link mt-3">Contact</a>
+                <a href="#contact" class="nav-link mt-4 text-dark">Contact</a>
               </li>
               <li class="nav-item">
-                <%= link_to 'Link2', root_path, class: "nav-link mt-3" %></a>
+                <%= link_to 'Link2', root_path, class: "nav-link mt-4 text-dark" %></a>
               </li>
             </ul>
             <% if user_signed_in? %>
               <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class:"btn btn-dark btn-outline-light" %>
             <% else %>
-              <%= link_to 'Sign in', new_user_session_path, class: "text-white mx-4" %>
-              <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark btn-outline-light" %>
+              <%= link_to 'Sign in', new_user_session_path, class: "text-dark mt-4 mx-4" %>
+              <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-dark mt-4" %>
             <% end %>
           </div>
         </div>
@@ -54,18 +54,18 @@
     <footer class="container" id="contact">
       <hr class="featurette-divider">
       <div class="row  text-center">
-        <div class="col">
+        <div class="col-sm-12 col-md-4">
           <p class="fw-bold">Location</p>
           <p>Lavender Spa Salon</p>
           <p>26700 Beck Rd.</p>
           <p>Novi, MI 48374</p>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-4">
           <p class="fw-bold">Info</p>
           <p>Phone: 248.344.9944</p>
           <p>info@lavenderspa.com</p>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-4">
           <p class="fw-bold">Hours</p>
           <p>Monday: 10:00AM - 6:00PM</p>
           <p>Tues-Fri: 9:00AM - 9:00PM</p>
