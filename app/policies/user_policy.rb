@@ -8,8 +8,7 @@ class UserPolicy < ApplicationPolicy
     end
 
     def home?
-      return true
+      true
     end
-
   end
 end

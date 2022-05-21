@@ -9,7 +9,7 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <%= image_tag "photospa1.jpg", class: "image-fluid" %>
+        <%= image_tag "photospa1.jpg", class: "img-fluid" %>
         <div class="container">
           <div class="carousel-caption">
             <h1>Example headline.</h1>
@@ -20,7 +20,7 @@
       </div>
       <div class="carousel-item">
 
-        <%= image_tag ("photospa2.jpg") %>
+        <%= image_tag "photospa2.jpg", class: "img-fluid" %>
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <%= image_tag ("photospa3.jpg") %>
+        <%= image_tag ("photospa3.jpg"), class: "img-fluid" %>
         <div class="container">
           <div class="carousel-caption">
             <h1>One more for good measure.</h1>
@@ -85,16 +85,15 @@
 
     <!-- START THE FEATURETTES -->
 
-    <hr class="featurette-divider">
+    <hr class="featurette-divider" id="about">
 
-    <div class="row featurette">
+    <div class="row">
       <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+        <h1>WHO WE ARE</h1>
+        <p class="lead">Your picture of health is completely unique to you. That’s why LavenderSpa’s integrative approach to wellness is aimed at helping you truly know yourself. Our personalised programme of care is based on a deep understanding of your precise needs. Our all-encompassing treatments cover all dimensions of the self: physical, emotional, mental and spiritual. Combining technology and tradition, our team of visionary doctors and specialists will guide you on a path to flourishing, empowering you to make profound lifestyle transformations.</p>
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+        <%= image_tag ("home/photo1.jpg"), size: "500x350" %>
       </div>
     </div>
 
@@ -102,12 +101,11 @@
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+        <h1>WHERE WE ARE</h1>
+        <p class="lead">LavenderSpa sits on the protected, jungle-clad island of Bang Krachao, across from Bangkok on the Chao Phraya River and only an hour from both Suvarnabhumi and Don Mueang International Airports. Find yourself immersed in a natural oasis, peacefully isolated from the city, yet still conveniently connected. Your path to ultimate wellness begins on these idyllic grounds.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+        <%= image_tag "home/photo2.jpg", size: "500x350" %>
       </div>
     </div>
 
@@ -115,11 +113,11 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+        <h1>THIS IS LAVENDERSPA</h1>
+        <p class="lead">Whether maintaining your health or preventing illnesses has long been a priority, or you’re just starting on your wellness journey, our specialists are here to guide you along the way. Your healing experience begins with an intimate knowledge of the self. Our diverse team of experts will assess your state using detailed diagnostics and a dedicated advisor will work with you to design a plan that moves you towards your unique health goals. Embark on a journey that leads to wellbeing as a way of life. </p>
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        <%= image_tag "home/photo3.jpg", size: "500x350" %>
       </div>
     </div>
 
