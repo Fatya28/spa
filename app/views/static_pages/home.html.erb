@@ -35,7 +35,7 @@
           <div class="carousel-caption">
             <h1>One more for good measure.</h1>
             <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-outline-light mt-1" href="#">Browse gallery</a></p>
+              <%= link_to 'Browse gallery', gallery_path, class: "btn btn-lg btn-outline-light mt-1" %>
           </div>
         </div>
       </div>
@@ -87,37 +87,37 @@
 
     <hr class="featurette-divider" id="about">
 
-    <div class="row">
-      <div class="col-md-7">
+    <div class="row text-sm-center text-lg-start">
+      <div class="col-lg-7 col-sm-12">
         <h1>WHO WE ARE</h1>
         <p class="lead">Your picture of health is completely unique to you. That’s why LavenderSpa’s integrative approach to wellness is aimed at helping you truly know yourself. Our personalised programme of care is based on a deep understanding of your precise needs. Our all-encompassing treatments cover all dimensions of the self: physical, emotional, mental and spiritual. Combining technology and tradition, our team of visionary doctors and specialists will guide you on a path to flourishing, empowering you to make profound lifestyle transformations.</p>
       </div>
-      <div class="col-md-5">
-        <%= image_tag ("home/photo1.jpg"), size: "500x350" %>
+      <div class="col-lg-5 col-sm-12">
+        <%= image_tag ("home/photo1.jpg"), class: "img-fluid" %>
       </div>
     </div>
 
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7 order-md-2">
+      <div class="col-lg-7 col-sm-12 order-md-2">
         <h1>WHERE WE ARE</h1>
         <p class="lead">LavenderSpa sits on the protected, jungle-clad island of Bang Krachao, across from Bangkok on the Chao Phraya River and only an hour from both Suvarnabhumi and Don Mueang International Airports. Find yourself immersed in a natural oasis, peacefully isolated from the city, yet still conveniently connected. Your path to ultimate wellness begins on these idyllic grounds.</p>
       </div>
-      <div class="col-md-5 order-md-1">
-        <%= image_tag "home/photo2.jpg", size: "500x350" %>
+      <div class="col-lg-5 col-sm-12 order-md-1">
+        <%= image_tag "home/photo2.jpg", class: "img-fluid" %>
       </div>
     </div>
 
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7">
+      <div class="col-lg-7 col-sm-12">
         <h1>THIS IS LAVENDERSPA</h1>
         <p class="lead">Whether maintaining your health or preventing illnesses has long been a priority, or you’re just starting on your wellness journey, our specialists are here to guide you along the way. Your healing experience begins with an intimate knowledge of the self. Our diverse team of experts will assess your state using detailed diagnostics and a dedicated advisor will work with you to design a plan that moves you towards your unique health goals. Embark on a journey that leads to wellbeing as a way of life. </p>
       </div>
-      <div class="col-md-5">
-        <%= image_tag "home/photo3.jpg", size: "500x350" %>
+      <div class="col-lg-5 col-sm-12">
+        <%= image_tag "home/photo3.jpg", class: "img-fluid" %>
       </div>
     </div>
 
