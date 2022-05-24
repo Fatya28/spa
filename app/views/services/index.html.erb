@@ -12,7 +12,7 @@
           <div class="col-md-6 col-sm-12">
             <p><span class="fw-bold mx-1">Duration:</span><%= service.duration %></p>
             <p><span class="fw-bold mx-1">Performed:</span><%= service.performed %></p>
-            <p class="mx-1"><%= service.introduction %></p>
+            <p class="mx-auto"><%= service.introduction %></p>
               <% if current_user.client? %>
                 <%= link_to 'Order', root_path, class: "btn btn-dark my-sm-3" %>
               <% else %>
