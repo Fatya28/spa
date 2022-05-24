@@ -1,0 +1,26 @@
+<p class="featurette-divider"></p>
+  <% @services.each do |service| %>
+    <div class="card text-dark bg-light p-1 mx-auto w-50">
+      <div class="card-body">
+        <h5 class="card-title fw-bold"><%= service.title %></h5>
+        <hr>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <%= image_tag url_for(service.image), class:"img-fluid rounded" %>
+          </div>
+
+          <div class="col-md-6 col-sm-12">
+            <p><span class="fw-bold mx-1">Duration:</span><%= service.duration %></p>
+            <p><span class="fw-bold mx-1">Performed:</span><%= service.performed %></p>
+            <p class="mx-1"><%= service.introduction %></p>
+              <% if current_user.client? %>
+                <%= link_to 'Order', root_path, class: "btn btn-dark my-sm-3" %>
+              <% else %>
+                <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-3" %>
+              <% end %>
+              <%= link_to 'More details', service_path(service), class: "btn btn-outline-dark" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
