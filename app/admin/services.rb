@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Service do
   permit_params :title, :description, :price, :performed,
                 :duration, :introduction, :image
@@ -24,7 +26,7 @@ ActiveAdmin.register Service do
   form do |f|
     f.inputs do
       f.input :title
-      f.input  :introduction
+      f.input :introduction
       f.input :description
       f.input :price
       f.input :performed
@@ -33,5 +35,4 @@ ActiveAdmin.register Service do
     end
     f.actions
   end
-
 end

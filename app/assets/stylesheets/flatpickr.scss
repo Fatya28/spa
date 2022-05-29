@@ -1,0 +1,15 @@
+body {
+  text-align: center;
+}
+
+input {
+  border: 2px solid whitesmoke;
+  border-radius: 20px;
+  padding: 12px 10px;
+  text-align: center;
+  width: 250px;
+}
+
+.flatpickr-day.disabled {
+  color: rgba(255,0,0,0.3);
+}

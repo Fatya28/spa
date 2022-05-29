@@ -13,7 +13,7 @@
 
     <% Dir.glob('app/assets/images/gallery/*').map do |path| %>
       <div class="mySlides">
-        <%= image_tag "gallery/#{ File.basename(path) }", width: "1200" %>
+        <%= image_tag "gallery/#{ File.basename(path) }", width: "1200", class: "img-fluid" %>
       </div>
     <% end %>
 
@@ -27,3 +27,4 @@
   </div>
 </div>
 <%= javascript_include_tag 'gallery.js' %>
+<%= stylesheet_link_tag "gallery", "data-turbo-track": "reload" %>

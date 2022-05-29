@@ -14,7 +14,7 @@
             <p><span class="fw-bold mx-1">Performed:</span><%= service.performed %></p>
             <p class="mx-auto"><%= service.introduction %></p>
               <% if current_user.client? %>
-                <%= link_to 'Order', root_path, class: "btn btn-dark my-sm-3" %>
+                <%= link_to 'Order', new_service_order_path(service), class: "btn btn-dark my-sm-3" %>
               <% else %>
                 <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-3" %>
               <% end %>

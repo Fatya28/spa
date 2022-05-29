@@ -74,7 +74,7 @@ body {
 
 /* Next & previous buttons */
 .prev,
-.next {
+a.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -91,14 +91,14 @@ body {
 }
 
 /* Position the "next button" to the right */
-.next {
+a.next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover,
-.next:hover {
+a.next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
