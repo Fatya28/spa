@@ -993,7 +993,7 @@
 
 "@rails/actiontext@^6.0.5":
   version "6.0.5"
-  resolved "https://registry.npmjs.org/@rails/actiontext/-/actiontext-6.0.5.tgz"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.0.5.tgz#a2ef2d5d829fd032e294e8465ace4107a2b34db5"
   integrity sha512-FF0vCANuJu5I0e1D73zz/aOE33KKXvOpkus7wRQoZq3Yv4H6D6FiOEMn2TF1mO8u5IpPoSbttXaJ4ROj3aWEwA==
   dependencies:
     "@rails/activestorage" "^6.0.0"
@@ -1254,6 +1254,10 @@ acorn@^8.5.0:
   version "8.7.1"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.7.1.tgz"
   integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
+
+activeadmin_quill_editor@blocknotes/activeadmin_quill_editor:
+  version "1.0.0"
+  resolved "https://codeload.github.com/blocknotes/activeadmin_quill_editor/tar.gz/b00fcd90abf20737034cd2e3c61193f3ac444c1a"
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -6679,7 +6683,7 @@ tr46@^1.0.1:
 
 trix@^2.0.0-beta.0:
   version "2.0.0-beta.0"
-  resolved "https://registry.npmjs.org/trix/-/trix-2.0.0-beta.0.tgz"
+  resolved "https://registry.yarnpkg.com/trix/-/trix-2.0.0-beta.0.tgz#e7034867182356c023abdef90c7bdc341bb3e105"
   integrity sha512-D1c7FxP1hGXM/MnTd/+fGUbSDLkfxsqjA0NxOTzByQywVJVNHDOkn8xAScCKVOiAN6hXlqUR2qX4CPJHTGj+cQ==
 
 ts-pnp@^1.1.6:

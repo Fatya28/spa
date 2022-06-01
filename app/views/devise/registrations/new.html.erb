@@ -1,5 +1,6 @@
+<% provide(:title, "Sign up") %>
 <div class="container-fluid featurette-divider align-items-center">
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 border p-5 m-auto">
+  <div class="col-lg-4 col-md-6 col-sm-10 border p-5 mx-auto">
 
     <h2 class="center">Sign up</h2>
 
@@ -7,7 +8,11 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-group my-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: :email%>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: :name %>
+      </div>
+      
+      <div class="form-group my-3">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: :email %>
       </div>
 
       <div class="form-group my-3">
@@ -16,7 +21,7 @@
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %>
         <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: :password  %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: :password %>
       </div>
 
       <div class="form-group my-3">

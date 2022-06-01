@@ -2,16 +2,16 @@
 
 ActiveAdmin.register Service do
   permit_params :title, :description, :price, :performed,
-                :duration, :introduction, :image
+                :duration, :introduction
 
   index do
     selectable_column
     id_column
     column :title
     column :introduction
-    column :description
-    column :price
-    column :image
+    column :price do |service|
+      number_to_currency service.price
+    end
     column :performed
     column :duration
     actions

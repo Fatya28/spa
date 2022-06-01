@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @orders = Order.all
+    @orders = current_user.orders
     @masters = User.master
+  end
+
+  def update_status
+    @order = Order.find(params[:id])
+    @order.update(status: params[:status])
+    redirect_to @order, notice: "Status Changed to #{@order.status}"
   end
 
   def show
@@ -14,7 +22,7 @@ class OrdersController < ApplicationController
     @service = Service.find(params[:service_id])
     @masters = User.master.order(rating: :desc)
     @master = params[:master_id]
-    disable_date = Order.select(:startdate).where('master_id = ? and startdate > current_date', @master)
+    disable_date = Order.not_cancel.select(:startdate).where('master_id = ? and startdate > current_date', @master)
     @disable_date = []
     i = disable_date.size - 1
     while i >= 0
@@ -28,10 +36,9 @@ class OrdersController < ApplicationController
     @master = params[:master_id]
     @service = Service.find(params[:service_id])
     @order = @service.orders.create(order_params.merge(user_id: current_user.id, master_id: params[:master_id]))
-    @order.nil?
 
     if @order.save
-      redirect_to root_path
+      redirect_to orders_path
     else
       render :new, status: :unprocessable_entity
     end

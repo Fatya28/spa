@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :role, :image
+  permit_params :email, :password, :password_confirmation, :role, :name, :avatar
 
   index do
     selectable_column
@@ -9,6 +9,9 @@ ActiveAdmin.register User do
     column :email
     column :role
     column :created_at
+    column :order_count do |user|
+      user.orders.count
+    end
     actions
   end
 
@@ -20,10 +23,13 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs do
+      f.input :name
       f.input :email
+      f.input :description
       f.input :password
       f.input :password_confirmation
-      f.input :role, value: :master
+      f.input :role, selected: :master
+      f.input :avatar, as: :file
     end
     f.actions
   end

@@ -4,12 +4,7 @@ ActiveAdmin.register_page 'Dashboard' do
   menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
   content title: proc { I18n.t('active_admin.dashboard') } do
-    div class: 'blank_slate_container', id: 'dashboard_default_message' do
-      span class: 'blank_slate' do
-        span I18n.t('active_admin.dashboard_welcome.welcome')
-        small I18n.t('active_admin.dashboard_welcome.call_to_action')
-      end
-    end
+
 
     # Here is an example of a simple dashboard with columns and panels.
     #
@@ -30,5 +25,48 @@ ActiveAdmin.register_page 'Dashboard' do
     #     end
     #   end
     # end
+
+    columns do
+       column do
+         panel "New Orders" do
+           table do
+             thead do
+               th '#'
+               th 'status'
+               th 'master'
+               th 'user'
+             end
+            Order.draft.last(5).map do |order|
+              tr do
+                td link_to(order.id, admin_order_path(order))
+                td order.status
+                td order.master.email
+                td order.user.email
+              end
+            end
+          end
+        end
+       end
+
+       column do
+         panel "New Users" do
+           table do
+             thead do
+               th '#'
+               th 'name'
+               th 'email'
+             end
+             User.client.last(5).map do |user|
+               tr do
+                 td link_to(user.id, admin_user_path(user))
+                 td user.name
+                 td user.email
+               end
+             end
+           end
+         end
+       end
+
+     end
   end
 end

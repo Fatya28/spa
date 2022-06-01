@@ -1,4 +1,41 @@
-<h1><%= @service.title %></h1>
+<% provide(:title, "#{@service.title}") %>
+<div class=" text-dark  p-1 mx-auto col-xl-6 col-lg-7 col-sm-9 featurette-divider">
+  <div class="my-1 p-1">
+    <div class="row">
+      <div class="col-10">
+        <span class="fw-bold fs-4"><%= @service.title %></span>
+        <br>
+        <a href="#reviews">
+          <i class="bi bi-pencil-square"></i>
+          <%= pluralize(@service.reviews.count, 'review') %>
+        </a>
 
-<p><%= @service.description %></p>
-<%= image_tag url_for(@service.image) %>
+      </div>
+      <div class="col-2 text-end">
+        <% if current_user.nil? || current_user.master? %>
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-1" %>
+        <% else %>
+          <%= link_to 'Order', new_service_order_path(@service), class: "btn btn-dark my-sm-1" %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="row my-3">
+
+      <div class="col-lg-6 col-md-12">
+        <%= image_tag url_for(@service.image), class:"img-fluid rounded" %>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <span class="fw-bold mx-auto">Performed: </span><%= @service.performed %><br>
+        <span class="fw-bold mx-auto">Price: </span><%= number_to_currency(@service.price) %><br>
+        <p class="my-3"><%= @service.introduction %></p>
+      </div>
+    </div>
+    <hr>
+    <p align="justify"><%= @service.description %></p>
+  </div>
+</div>
+<div id="reviews">
+  <%= render @service.reviews %>
+</div>

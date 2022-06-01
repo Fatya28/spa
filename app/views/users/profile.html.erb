@@ -1,0 +1,24 @@
+<% provide(:title, "Profile") %>
+<div class="card col-xl-4 col-md-5 mx-auto featurette-divider">
+  <div class="row p-3">
+    <div class="col-4 text-end">
+      <%= get_image(current_user.id, 150)%>
+    </div>
+    <div class="col-6 mx-auto">
+      <h4><%= current_user.name %></h4>
+        <i class="bi bi-envelope-fill mx-1"></i><%= current_user.email %>
+        <br/>
+        <i class="bi bi-gift-fill mx-1"></i>
+        <% if current_user.birthday.nil? %>
+          No data
+        <% else %>
+          <%= current_user.birthday %>
+        <% end %>
+        <% if current_user.master? %>
+          <% current_user.description %>
+        <% end %>
+        <br/>
+        <%= link_to 'Edit', root_path %>
+      </div>
+  </div>
+</div>

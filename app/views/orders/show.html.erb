@@ -1,2 +1,45 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<% provide(:title, "Order ##{@order.id}") %>
+<div class="row featurette-divider">
+  <div class="text-dark col-xl-2 col-lg-2 col-sm-6">
+
+
+          <span class="fw-bold fs-4"> Order #<%= @order.id %></span>
+          <br>
+          <div class="my-2">
+            <span class="fw-bold mx-auto">Title: </span>
+            <%= link_to @order.service.title, service_path(@order.service_id) %>
+          </div>
+
+          <div class="my-2">
+            <span class="fw-bold mx-auto my-3">Price: </span><%= number_to_currency(@order.service.price) %>
+          </div>
+
+          <div class="my-2">
+            <span class="fw-bold mx-auto my-3">Status: </span><%= @order.status.capitalize %>
+          </div>
+
+          <div class="my-2">
+            <span class="fw-bold mx-auto my-3">Date: </span><%= @order.startdate.strftime('%a, %B %-d') %>
+          </div>
+          <p>
+            <%= get_image(@order.master.id)%>
+            <%= @order.master.name.capitalize %>
+          </p>
+
+          <% if @order.draft? %>
+            <%= button_to 'Cancel order', update_status_order_path(status: :cancel), method: :patch, class: "btn btn-sm btn-outline-dark my-sm-1" %>
+          <% end %>
+
+
+      </div>
+      <div class="col-6">
+        <% if @order.confirm? && @order.review.nil? %>
+          <h2>Add a review:</h2>
+          <%= render 'reviews/form' %>
+        <% end %>
+
+        <% if @order.review.present? %>
+          <%= render @order.review %>
+        <% end %>
+      </div>
+    </div>

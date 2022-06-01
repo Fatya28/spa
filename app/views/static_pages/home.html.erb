@@ -1,5 +1,4 @@
-<main>
-
+<% provide(:title, "Home") %>
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -92,7 +91,7 @@
         <p class="lead">Your picture of health is completely unique to you. That’s why LavenderSpa’s integrative approach to wellness is aimed at helping you truly know yourself. Our personalised programme of care is based on a deep understanding of your precise needs. Our all-encompassing treatments cover all dimensions of the self: physical, emotional, mental and spiritual. Combining technology and tradition, our team of visionary doctors and specialists will guide you on a path to flourishing, empowering you to make profound lifestyle transformations.</p>
       </div>
       <div class="col-lg-5 col-sm-12">
-        <%= image_tag ("home/photo1.jpg"), size: "500x350" %>
+        <%= image_tag ("home/photo1.jpg"), class: "img-fluid" %>
       </div>
     </div>
 
@@ -116,10 +115,8 @@
         <p class="lead">Whether maintaining your health or preventing illnesses has long been a priority, or you’re just starting on your wellness journey, our specialists are here to guide you along the way. Your healing experience begins with an intimate knowledge of the self. Our diverse team of experts will assess your state using detailed diagnostics and a dedicated advisor will work with you to design a plan that moves you towards your unique health goals. Embark on a journey that leads to wellbeing as a way of life. </p>
       </div>
       <div class="col-lg-5 col-sm-12">
-        <%= image_tag "home/photo3.jpg", size: "500x350" %>
+        <%= image_tag "home/photo3.jpg", class: "img-fluid" %>
       </div>
     </div>
 
   </div>
-
-</main>

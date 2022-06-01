@@ -1,26 +1,34 @@
-<p class="featurette-divider"></p>
-  <% @services.each do |service| %>
-    <div class="card text-dark bg-light p-1 mx-auto w-50">
-      <div class="card-body">
-        <h5 class="card-title fw-bold"><%= service.title %></h5>
-        <hr>
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <%= image_tag url_for(service.image), class:"img-fluid rounded" %>
-          </div>
+<% provide(:title, "Services") %>
+<div class="featurette-divider"></div>
+<% @services.each do |service| %>
+  <div class="card text-dark bg-light p-1 mx-auto col-xl-6 col-lg-7 col-sm-9 my-5">
+    <div class="card-body my-1 p-1">
+      <div class="row">
+        <div class="col-10">
+          <span class="fw-bold fs-4"><%= service.title %></span>
+        </div>
+        <div class="col-2 text-end my-1">from <%= service.price %>$</div>
+      </div>
+      <hr>
+      <div class="row">
 
-          <div class="col-md-6 col-sm-12">
-            <p><span class="fw-bold mx-1">Duration:</span><%= service.duration %></p>
-            <p><span class="fw-bold mx-1">Performed:</span><%= service.performed %></p>
-            <p class="mx-auto"><%= service.introduction %></p>
-              <% if current_user.client? %>
-                <%= link_to 'Order', new_service_order_path(service), class: "btn btn-dark my-sm-3" %>
-              <% else %>
-                <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-3" %>
-              <% end %>
-              <%= link_to 'More details', service_path(service), class: "btn btn-outline-dark" %>
-          </div>
+        <div class="col-lg-6 col-md-12">
+          <%= image_tag url_for(service.image), class:"img-fluid rounded" %>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+          <span class="fw-bold mx-auto">Performed: </span><%= service.performed %><br>
+          <p class="m-auto"><%= service.introduction %></p>
+
+          <% if current_user.nil? || current_user.master? %>
+            <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-1" %>
+          <% else %>
+            <%= link_to 'Order', new_service_order_path(service), class: "btn btn-dark my-sm-1" %>
+          <% end %>
+
+          <%= link_to 'More details', service_path(service), class: "btn btn-outline-dark mx-3" %>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>

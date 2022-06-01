@@ -1,10 +1,11 @@
+<% provide(:title, "New order") %>
 <%= form_with model: [@service, @service.orders.build(:master_id=> 20, :user_id=> current_user.id)] do |form| %>
 <div class="accordion featurette-divider w-75 mx-auto" id="menu">
   <!-- item-1 -->
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#item-1">
-        1. Choose Master
+        1. Choose Master for <%= @service.title %>
       </button>
     </h2>
     <!-- класс show делает пункт открытым -->
@@ -14,10 +15,10 @@
           <% @masters.each do |master|%>
 
             <div class="col-xl-3 col-md-4 col-sm-6">
-<%= link_to new_service_order_path(:master_id=>master.id), id: master.id, class: "text-decoration-none text-dark" do %>
+              <%= link_to new_service_order_path(:master_id=>master.id), id: master.id, class: "text-decoration-none text-dark" do %>
               <div class="card text-center p-2">
-                <img src="https://github.com/mdo.png" width="60" height="60" class="rounded-circle mx-auto" text-align="center" />
-                <span><%= master.email %></span>
+                <%= get_image(master.id, 70)%>
+                <span><%= master.name %></span>
                 <p>
                   <% master.fill_stars.times do %>
                     <i class="bi bi-star-fill"></i>
@@ -38,35 +39,19 @@
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item-2">
         2. Choose Date
-
         <%= hidden_field_tag :master_id, params[:master_id] %>
-
-
       </button>
     </h2>
     <div id="item-2" class="accordion-collapse collapse" data-bs-parent="#menu">
       <div class="accordion-body">
-
             <%= form.date_field :startdate, id: "baseDate", placeholder: "Please select Date Time" %>
-
-
-              <%= form.submit %>
-
-
+            <br>
+            <%= form.submit 'Create order', class: "m-3 btn btn-outline-dark" %>
           <% end %>
-
-
-
-
       </div>
-      <div>
-
-  </div>
     </div>
   </div>
 </div>
-
-
 
 <!-- partial -->
 
@@ -90,9 +75,6 @@ dateFormat: "Y-m-d",
         progress: true
     });
 </script>
-
-
-
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
 

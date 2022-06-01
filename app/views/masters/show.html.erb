@@ -1,0 +1,36 @@
+<% provide(:title, "Master - #{@master.name}") %>
+<div class="featurette-divider"></div>
+
+  <div class="card text-dark bg-light p-1 mx-auto col-lg-7 col-sm-9 my-5">
+    <div class="card-body my-1 p-1">
+      <div class="row p-2">
+<div class="col-lg-4 col-md-5">
+
+            <p><%= get_image(@master.id, 200)%>
+
+
+
+
+
+
+
+</div>
+<div class="col-lg-8">
+  <span class="mx-auto"><%= @master.name %></span>
+  <div class="text-end">
+  <% @master.fill_stars.times do %>
+    <i class="bi bi-star-fill"></i>
+  <% end %>
+  <% @master.blank_stars.times do %>
+    <i class="bi bi-star"></i>
+  <% end %></div>
+</div>
+
+
+
+</div>
+
+
+
+    </div>
+  </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Spa</title>
+    <title><%= yield(:title) %> | LavenderSpa</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,7 +16,7 @@
 
     <header>
 
-      <nav class="navbar navbar-inverse navbar-expand-md navbar-light fixed-top bg-white">
+      <nav class="navbar navbar-inverse navbar-expand-md navbar-light fixed-top bg-white border-bottom">
         <div class="container-fluid">
             <%= image_tag("label.png", size: "160x70", class: "px-2") %>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,20 +33,28 @@
               <li class="nav-item">
                 <a href="#contact" class="nav-link mx-3 text-dark">Contact</a>
               </li>
+              <li class="nav-item">
+                <%= link_to 'Services', services_path, class: "nav-link mx-3 text-dark" %></a>
+              </li>
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Orders', orders_path, class: "nav-link mx-3 text-dark" %></a>
+                </li>
+              <% end %>
             </ul>
             <% if user_signed_in? %>
 
               <div class="dropdown mx-2 px-5">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="50" height="50" class="rounded-circle">
+                  <%= get_image(current_user.id)%>
                 </a>
                 <ul class="dropdown-menu text-small mx-3" aria-labelledby="dropdownUser1">
                   <li><a class="dropdown-item" href="#">New project...</a></li>
                   <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><%= link_to "Profile", profile_path, class: "mx-3" %></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
-                    <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class:"btn btn-dark btn-outline-light" %>
+                    <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-dark mx-3" %>
                   </li>
                 </ul>
               </div>
@@ -67,7 +75,7 @@
 
     <!-- FOOTER -->
     <footer class="container" id="contact">
-      <hr class="featurette-divider">
+      <hr class="my-5">
       <div class="row  text-center">
         <div class="col-sm-12 col-md-4">
           <p class="fw-bold">Location</p>

@@ -1,0 +1,22 @@
+<% @user = User.find(Order.find(review.order.id).user_id)%>
+<div class="d-flex align-items-start my-3 mx-auto col-6">
+  <div><%= get_image(@user.id, 90)%></div>
+    <div class="ml-2 mx-2">
+      <span class="fw-bold mx-1"><%= @user.name %></span>
+      <%= review.updated_at.strftime('%d.%m.%Y') %>
+      <br>
+      <% review.fill_stars.times do %>
+        <i class="bi bi-star-fill"></i>
+      <% end %>
+      <% review.blank_stars.times do %>
+        <i class="bi bi-star"></i>
+      <% end %>
+      <div><%= review.comment %></div>
+    </div>
+</div>
+
+<style>
+div.class {
+clear:both; // перенос
+}
+</style>
