@@ -11,9 +11,8 @@
         <%= image_tag "home/photo4.jpg", class: "img-fluid" %>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-outline-light mt-1" href="#">Sign up today</a></p>
+            <h3>Time spent getting a massage is never wasted</h3>
+            <%= link_to 'Sign up today', new_user_session_path, class: "btn btn-lg btn-outline-light mt-1" %>
           </div>
         </div>
       </div>
@@ -22,9 +21,8 @@
         <%= image_tag "home/photo5.jpg", class: "img-fluid" %>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-outline-light mt-1" href="#">Learn more</a></p>
+            <h3>Rest and your energy will be restored.</h3>
+            <%= link_to 'View services', services_path, class: "btn btn-lg btn-outline-light mt-1" %>
           </div>
         </div>
       </div>
@@ -32,8 +30,7 @@
         <%= image_tag ("home/photo6.jpg"), class: "img-fluid" %>
         <div class="container">
           <div class="carousel-caption">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
+            <h3>Open your spirit. And your eyes</h3>
               <%= link_to 'Browse gallery', gallery_path, class: "btn btn-lg btn-outline-light mt-1" %>
           </div>
         </div>

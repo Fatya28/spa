@@ -7,7 +7,7 @@
         <div class="col-10">
           <span class="fw-bold fs-4"><%= service.title %></span>
         </div>
-        <div class="col-2 text-end my-1">from <%= service.price %>$</div>
+        <div class="col-2 text-end my-1">from <%= number_to_currency(service.price) %></div>
       </div>
       <hr>
       <div class="row">

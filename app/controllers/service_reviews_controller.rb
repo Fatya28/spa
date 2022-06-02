@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class ServiceReviewsController < ApplicationController
-  def show
-  end
+  def show; end
 
   def create
     @service = Service.find(params[:id].service_id)
@@ -9,8 +10,8 @@ class ServiceReviewsController < ApplicationController
   end
 
   private
-    def review_params
-      params.require(:service_review).permit(:service_id, :user_id, :status, :rating, :comment)
-    end
 
+  def review_params
+    params.require(:service_review).permit(:service_id, :user_id, :status, :rating, :comment)
+  end
 end

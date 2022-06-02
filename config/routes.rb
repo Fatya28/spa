@@ -30,7 +30,5 @@ Rails.application.routes.draw do
   get 'gallery', to: 'static_pages#gallery'
   get 'profile', to: 'users#profile'
   get 'masters', to: 'masters#index'
-  resources :masters, only: [:index , :show]
-
-
+  resources :masters, only: %i[index show]
 end

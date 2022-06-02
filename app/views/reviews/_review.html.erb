@@ -1,5 +1,5 @@
 <% @user = User.find(Order.find(review.order.id).user_id)%>
-<div class="d-flex align-items-start my-3 mx-auto col-6">
+<div class="d-flex align-items-start my-3 col-6">
   <div><%= get_image(@user.id, 90)%></div>
     <div class="ml-2 mx-2">
       <span class="fw-bold mx-1"><%= @user.name %></span>

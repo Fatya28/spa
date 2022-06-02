@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Order do
   permit_params :service_id, :user_id, :master_id, :status
 
@@ -33,5 +35,4 @@ ActiveAdmin.register Order do
     end
     f.actions
   end
-
 end

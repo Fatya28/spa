@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :reviews, through: :orders, dependent: :destroy
 
-  validates :name, presence:true
+  validates :name, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -16,15 +16,14 @@ class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
 
   def orders
-    Order.where("master_id = ? OR user_id = ?", self.id, self.id)
+    Order.where('master_id = ? OR user_id = ?', id, id)
   end
 
   def reviews
-    Review.joins(:order).where("master_id = ? OR user_id = ?", self.id, self.id)
+    Review.joins(:order).where('master_id = ? OR user_id = ?', id, id)
   end
 
   def set_default_role
     self.role ||= :client
   end
-
 end
