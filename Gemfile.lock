@@ -361,7 +361,6 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   selenium-webdriver
-  sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
