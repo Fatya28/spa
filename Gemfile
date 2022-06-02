@@ -80,4 +80,4 @@ group :test do
 end
 
 gem 'bootstrap-datepicker-rails'
-gem 'webpacker', '~> 5.4'
+gem 'webpacker', github: 'rails/webpacker', branch: 'master'

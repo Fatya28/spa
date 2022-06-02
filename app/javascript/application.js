@@ -5,6 +5,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
 import "bootstrap/dist/js/bootstrap.bundle"
-import "trix"
+//import "trix"
 import "@rails/actiontext"
-import '…/src/jets/crud'
