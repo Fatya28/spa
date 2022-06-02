@@ -7,3 +7,4 @@ import "@fortawesome/fontawesome-free"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "trix"
 import "@rails/actiontext"
+import '…/src/jets/crud'
