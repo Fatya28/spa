@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OrderReviewsController < ApplicationController
+class ReviewsController < ApplicationController
   def create
     @order = Order.find(params[:order_id])
 
