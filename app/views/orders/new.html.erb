@@ -1,6 +1,13 @@
 <% provide(:title, "New order") %>
-<%= form_with model: [@service, @service.orders.build(:master_id=> 20, :user_id=> current_user.id)] do |form| %>
+<%= form_with model: [@service, @service.orders.build ] do |form| %>
 <div class="accordion featurette-divider w-75 mx-auto" id="menu">
+  <% if flash[:danger].present? %>
+    <% flash.each do |name, messages| %>
+      <% messages.each do |message| %>
+        <div class="bg-danger" style="--bs-bg-opacity: .5;"><%= message %></div>
+      <% end %>
+    <% end %>
+  <% end %>
   <!-- item-1 -->
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -45,6 +52,7 @@
     <div id="item-2" class="accordion-collapse collapse" data-bs-parent="#menu">
       <div class="accordion-body">
             <%= form.date_field :startdate, id: "baseDate", placeholder: "Please select Date Time" %>
+
             <br>
             <%= form.submit 'Create order', class: "m-3 btn btn-outline-dark" %>
           <% end %>

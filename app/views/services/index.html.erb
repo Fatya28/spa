@@ -20,13 +20,13 @@
           <span class="fw-bold mx-auto">Performed: </span><%= service.performed %><br>
           <p class="m-auto"><%= service.introduction %></p>
 
-          <% if current_user.nil? || current_user.master? %>
+          <% if current_user.nil? %>
             <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-1" %>
-          <% else %>
+          <% elsif  current_user.client? %>
             <%= link_to 'Order', new_service_order_path(service), class: "btn btn-dark my-sm-1" %>
           <% end %>
 
-          <%= link_to 'More details', service_path(service), class: "btn btn-outline-dark mx-3" %>
+          <%= link_to 'More details', service_path(service), class: "btn btn-outline-dark mx-auto" %>
         </div>
       </div>
     </div>

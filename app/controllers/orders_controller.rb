@@ -4,7 +4,13 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders
+
+    if params[:status].present?
+      @orders = current_user.orders.status(Order::STATUSES.index(params[:status].to_sym))
+    else
+      @orders = current_user.orders
+    end
+
     @masters = User.master
   end
 
@@ -38,9 +44,11 @@ class OrdersController < ApplicationController
     @order = @service.orders.create(order_params.merge(user_id: current_user.id, master_id: params[:master_id]))
 
     if @order.save
-      redirect_to orders_path
+      flash[:success] = "Order created successfully."
+      redirect_to @order
     else
-      render :new, status: :unprocessable_entity
+      flash[:danger] = @order.errors.full_messages
+      redirect_to new_service_order_path(master_id: params[:master_id])
     end
   end
 

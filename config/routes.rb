@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'order_reviews/create'
-  get 'service_reviews/show'
-  get 'service_reviews/delete'
-  get 'service_reviews/edit'
-  get 'users/profile'
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/new'
   resources :services do
     resources :orders, only: %i[create new]
   end

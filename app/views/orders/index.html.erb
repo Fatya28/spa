@@ -1,7 +1,12 @@
 <% provide(:title, "My orders") %>
 <div class="featurette-divider col-xl-6 col-md-9 col-sm-12 mx-auto">
+  <%= link_to 'All', orders_path, class: "btn btn-dark mr-2" %>
+  <% Order::STATUSES.each do |status| %>
+    <%= link_to status.capitalize, orders_path(status: status), class: "btn btn-dark mx-2" %>
+  <% end %>
   <table class="table table-hover caption-top">
     <caption>My orders (<%= @orders.count %>)</caption>
+    <%= @status %>
     <thead>
       <tr>
         <th scope="col"></th>
@@ -10,7 +15,11 @@
         <th scope="col">Price</th>
         <th scope="col">Status</th>
         <th scope="col">Date</th>
-        <th scope="col">Master</th>
+        <% if current_user.master? %>
+          <th scope="col">Client</th>
+        <% else %>
+          <th scope="col">Master</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -24,8 +33,13 @@
           <td><%= order.startdate.strftime('%a, %B %-d') %></td>
           <td>
             <p>
-              <%= get_image(order.master.id)%>
-              <%= order.master.name.capitalize %>
+              <% if current_user.master? %>
+                <%= get_image(order.user.id)%>
+                <%= order.user.name.capitalize %>
+              <% else %>
+                <%= get_image(order.master.id)%>
+                <%= order.master.name.capitalize %>
+              <% end %>
             </p>
           </td>
         </tr>

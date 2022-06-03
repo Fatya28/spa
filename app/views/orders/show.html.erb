@@ -1,6 +1,6 @@
 <% provide(:title, "Order ##{@order.id}") %>
 <div class="row featurette-divider">
-  <div class="text-dark col-xl-2 col-lg-2 col-sm-6">
+  <div class="text-dark col-xl-3 col-lg-4 col-sm-6">
 
 
           <span class="fw-bold fs-4"> Order #<%= @order.id %></span>
@@ -22,24 +22,30 @@
             <span class="fw-bold mx-auto my-3">Date: </span><%= @order.startdate.strftime('%a, %B %-d') %>
           </div>
           <p>
-            <%= get_image(@order.master.id)%>
-            <%= @order.master.name.capitalize %>
+            <% if current_user.master? %>
+              <%= get_image(@order.user.id)%>
+              <%= @order.user.name.capitalize %>
+            <% else %>
+              <%= get_image(@order.master.id)%>
+              <%= @order.master.name.capitalize %>
+            <% end %>
           </p>
 
-          <% if @order.draft? %>
+          <% if @order.draft? && current_user.client? %>
             <%= button_to 'Cancel order', update_status_order_path(status: :cancel), method: :patch, class: "btn btn-sm btn-outline-dark my-sm-1" %>
           <% end %>
 
 
       </div>
       <div class="col-6">
-        <% if @order.confirm? && @order.review.nil? %>
+        <% if @order.review.present? %>
+          <%= render @order.review %>
+        <% end %>
+        
+        <% if @order.complete? && @order.review.nil? %>
           <h2>Add a review:</h2>
           <%= render 'reviews/form' %>
         <% end %>
 
-        <% if @order.review.present? %>
-          <%= render @order.review %>
-        <% end %>
       </div>
     </div>
