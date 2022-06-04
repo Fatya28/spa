@@ -6,15 +6,6 @@ class ReviewsController < ApplicationController
 
     @review = @order.create_review(review_params)
     redirect_to order_path(@order)
-    @master = User.find(@order.master_id)
-
-    if @master.rating == 0
-      @new_rating = @review.rating
-    else
-      @new_rating = (@master.rating.to_i + @review.rating)/2
-    end
-
-    @master.update(rating: @new_rating)
   end
 
   private

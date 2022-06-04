@@ -41,8 +41,8 @@
         <% if @order.review.present? %>
           <%= render @order.review %>
         <% end %>
-        
-        <% if @order.complete? && @order.review.nil? %>
+
+        <% if @order.confirm? && @order.review.nil? %>
           <h2>Add a review:</h2>
           <%= render 'reviews/form' %>
         <% end %>

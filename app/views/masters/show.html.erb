@@ -4,13 +4,14 @@
 <div class="card text-dark bg-light p-1 mx-auto col-lg-7 col-sm-9 my-5">
   <div class="card-body my-1 p-1">
     <div class="row p-2">
-      <div class="col-lg-3 col-md-5">
-        <p><%= get_image(@master.id, 200)%></p>
+      <div class="col-lg-3 col-md-12">
+        <p class="text-center"><%= get_image(@master.id, 200)%></p>
       </div>
       <div class="col-lg-9">
         <div class="row">
           <div class="col">
-            <span class="fs-3 fw-bold"><%= @master.name.capitalize %>
+            <span class="fs-3 fw-bold"><%= @master.name.capitalize %></span>
+            <h6 class="my-2">Spa master</h6>
           </div>
           <div class="col text-end">
             <% @master.fill_stars.times do %>
@@ -44,7 +45,7 @@
                 role="tab"
                 aria-controls="ex2-tabs-2"
                 aria-selected="false"
-                > Reviews(<%= @master.reviews.count %>)</a
+                > Reviews(<%= @master.reviews.unblock.count %>)</a
               >
             </li>
           </ul>
@@ -66,7 +67,7 @@
               role="tabpanel"
               aria-labelledby="ex2-tab-2"
             >
-            <%= render @master.reviews %>
+            <%= render @master.reviews.unblock %>
             </div>
 
           </div>

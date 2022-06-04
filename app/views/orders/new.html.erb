@@ -21,20 +21,32 @@
         <div class="row">
           <% @masters.each do |master|%>
 
-            <div class="col-xl-3 col-md-4 col-sm-6">
-              <%= link_to new_service_order_path(:master_id=>master.id), id: master.id, class: "text-decoration-none text-dark" do %>
-              <div class="card text-center p-2">
-                <%= get_image(master.id, 70)%>
-                <span><%= master.name %></span>
-                <p>
-                  <% master.fill_stars.times do %>
-                    <i class="bi bi-star-fill"></i>
-                  <% end %>
-                  <% master.blank_stars.times do %>
-                    <i class="bi bi-star"></i>
-                  <% end %>
-                </p>
-              </div><% end %>
+            <div class="col-xl-2 col-md-4 col-sm-6">
+
+                <div class="card text-center my-2">
+                  <div class="text-end">
+                    <%= link_to master_path(master.id) do %>
+                    <i class="bi bi-info-circle text-dark m-1"></i>
+                    <% end %>
+                  </div>
+
+                  <%= get_image(master.id, 90)%>
+                  <span><%= master.name %></span>
+                  <p>
+                    <% master.fill_stars.times do %>
+                      <i class="bi bi-star-fill"></i>
+                    <% end %>
+                    <% master.blank_stars.times do %>
+                      <i class="bi bi-star"></i>
+                    <% end %>
+                    <br>
+                    <% if params[:master_id].to_i == master.id %>
+                      <i class="bi bi-check2 text-success"></i>
+                    <% else %>
+                      <%= link_to 'Choose', new_service_order_path(:master_id=>master.id), id: master.id %>
+                    <% end %>
+                  </p>
+                </div>
             </div>
           <% end %>
         </div>

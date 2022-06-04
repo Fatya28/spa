@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     if params[:status].present?
       @orders = current_user.orders.status(Order::STATUSES.index(params[:status].to_sym))
     else
-      @orders = current_user.orders
+      @orders = current_user.orders.order(:startdate)
     end
 
     @masters = User.master
@@ -38,8 +38,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @masters = User.master
-    @master = params[:master_id]
     @service = Service.find(params[:service_id])
     @order = @service.orders.create(order_params.merge(user_id: current_user.id, master_id: params[:master_id]))
 
@@ -48,7 +46,11 @@ class OrdersController < ApplicationController
       redirect_to @order
     else
       flash[:danger] = @order.errors.full_messages
-      redirect_to new_service_order_path(master_id: params[:master_id])
+      if  params[:master_id].empty?
+        redirect_to new_service_order_path
+      else
+        redirect_to new_service_order_path(master_id: params[:master_id])
+      end
     end
   end
 

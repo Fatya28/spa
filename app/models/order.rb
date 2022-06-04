@@ -7,7 +7,6 @@ class Order < ApplicationRecord
   has_one :review, dependent: :destroy
 
   validates :startdate, presence: true
-  
 
   STATUSES = %i[draft cancel confirm complete]
 
@@ -16,4 +15,6 @@ class Order < ApplicationRecord
   enum role: %i[client master]
 
   scope :status, ->(status) { where('status = ?', status) }
+
+
 end

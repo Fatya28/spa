@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   devise_for :users
-
+  resources :users
   get 'gallery', to: 'static_pages#gallery'
   get 'profile', to: 'users#profile'
   get 'masters', to: 'masters#index'
