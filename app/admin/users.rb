@@ -9,7 +9,7 @@ ActiveAdmin.register User do
     column :email
     column :role
     column :created_at
-    column :order_count do |user|
+    column :orders do |user|
       user.orders.count
     end
     actions

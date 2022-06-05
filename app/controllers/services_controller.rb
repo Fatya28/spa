@@ -2,7 +2,12 @@
 
 class ServicesController < ApplicationController
   def index
-    @services = Service.all
+    if params[:category_id].present?
+      @services = Service.all.where("category_id = ?", params[:category_id])
+    else
+      @services = Service.all
+    end
+    @categories = Category.all
   end
 
   def show

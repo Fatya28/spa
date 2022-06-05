@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_180227) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_05_213626) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_180227) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "service_id"
@@ -93,23 +99,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_180227) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "order_id"
     t.integer "rating"
-    t.integer "status"
+    t.integer "status", default: 0
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_reviews_on_order_id"
-  end
-
-  create_table "service_reviews", force: :cascade do |t|
-    t.bigint "service_id"
-    t.bigint "user_id"
-    t.text "comment"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "rating"
-    t.index ["service_id"], name: "index_service_reviews_on_service_id"
-    t.index ["user_id"], name: "index_service_reviews_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -121,6 +115,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_180227) do
     t.integer "performed"
     t.string "introduction"
     t.text "description"
+    t.bigint "category_id"
+    t.integer "rating", default: 0, null: false
+    t.index ["category_id"], name: "index_services_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -146,4 +143,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_180227) do
   add_foreign_key "orders", "services"
   add_foreign_key "orders", "users"
   add_foreign_key "orders", "users", column: "master_id", name: "master_id"
+  add_foreign_key "services", "categories"
 end

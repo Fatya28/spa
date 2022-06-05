@@ -1,5 +1,11 @@
 <% provide(:title, "Services") %>
 <div class="featurette-divider"></div>
+<div class="text-center">
+  <%= link_to 'All', services_path, class: "btn btn-sm btn-dark m-1" %>
+  <% @categories.each do |category| %>
+    <%= link_to category.name.capitalize, services_path(category_id: category.id), class: "btn btn-sm btn-dark m-1" %>
+  <% end %>
+</div>
 <% @services.each do |service| %>
   <div class="card text-dark bg-light p-1 mx-auto col-xl-6 col-lg-7 col-sm-9 my-5">
     <div class="card-body my-1 p-1">

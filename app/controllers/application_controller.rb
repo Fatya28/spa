@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar, :birthday])
   end
 
   def store_action
@@ -23,6 +24,7 @@ class ApplicationController < ActionController::Base
         request.path != "/users/password/edit" &&
         request.path != "/users/confirmation" &&
         request.path != "/users/sign_out" &&
+        request.path != "/users/edit" &&
         !request.xhr?) # don't store ajax calls
       store_location_for(:user, request.fullpath)
     end

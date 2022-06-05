@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'users/profile'
   resources :services do
     resources :orders, only: %i[create new]
   end

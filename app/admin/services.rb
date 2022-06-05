@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Service do
   permit_params :title, :description, :price, :performed,
-                :duration, :introduction
+                :category_id, :introduction
 
   index do
     selectable_column
@@ -13,7 +13,9 @@ ActiveAdmin.register Service do
       number_to_currency service.price
     end
     column :performed
-    column :duration
+    column :orders do |service|
+      service.orders.count
+    end
     actions
   end
 
@@ -29,10 +31,29 @@ ActiveAdmin.register Service do
       f.input :introduction
       f.input :description
       f.input :price
+      f.input :category
       f.input :performed
-      f.input :duration
       f.input :image, as: :file
     end
     f.actions
+
   end
+
+  show do
+    attributes_table do
+      row :title
+      row :price
+      row :created_at
+      row :performed
+      row :introduction
+      row :description
+      row :categiry
+      row :image do |ad|
+        image_tag url_for(service.image), size: "200x120"
+      end
+    end
+    active_admin_comments
+  end
+
+
 end

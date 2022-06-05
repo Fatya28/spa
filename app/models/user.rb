@@ -3,10 +3,12 @@
 class User < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
 
-  has_many :orders, dependent: :destroy
-  has_many :reviews, through: :orders, dependent: :destroy
+  has_many :orders, dependent: :restrict_with_exception
+  has_many :reviews, through: :orders, dependent: :restrict_with_exception
 
   validates :name, presence: true
+  validates :birthday, comparison: { less_than:  Date.today.ago(18.years) }, if: :birthday?
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
