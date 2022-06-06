@@ -1,5 +1,6 @@
-ActiveAdmin.register Review do
+# frozen_string_literal: true
 
+ActiveAdmin.register Review do
   permit_params :rating, :order_id, :status, :comment
 
   index do
@@ -22,10 +23,8 @@ ActiveAdmin.register Review do
 
   form do |f|
     f.inputs do
-
       f.input :status
     end
     f.actions
   end
-
 end

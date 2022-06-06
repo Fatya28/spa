@@ -79,13 +79,12 @@ ActiveAdmin.register_page 'Dashboard' do
                 td link_to(review.id, admin_review_path(review))
                 td review.comment
                 td review.rating
-                td  link_to review.order_id, admin_order_path(review.order)
+                td link_to review.order_id, admin_order_path(review.order)
               end
             end
           end
         end
       end
-
     end
   end
 end

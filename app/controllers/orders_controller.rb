@@ -4,12 +4,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
-    if params[:status].present?
-      @orders = current_user.orders.status(Order::STATUSES.index(params[:status].to_sym))
-    else
-      @orders = current_user.orders.order(:startdate)
-    end
+    @orders = if params[:status].present?
+                current_user.orders.status(Order::STATUSES.index(params[:status].to_sym))
+              else
+                current_user.orders.order(:startdate)
+              end
 
     @masters = User.master
   end
@@ -42,11 +41,11 @@ class OrdersController < ApplicationController
     @order = @service.orders.create(order_params.merge(user_id: current_user.id, master_id: params[:master_id]))
 
     if @order.save
-      flash[:success] = "Order created successfully."
+      flash[:success] = 'Order created successfully.'
       redirect_to @order
     else
       flash[:danger] = @order.errors.full_messages
-      if  params[:master_id].empty?
+      if params[:master_id].empty?
         redirect_to new_service_order_path
       else
         redirect_to new_service_order_path(master_id: params[:master_id])

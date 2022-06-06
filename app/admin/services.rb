@@ -37,7 +37,6 @@ ActiveAdmin.register Service do
       f.input :image, as: :file
     end
     f.actions
-
   end
 
   show do
@@ -49,14 +48,11 @@ ActiveAdmin.register Service do
       row :introduction
       row :description
       row :categiry
-      row :image do |ad|
-        image_tag url_for(service.image), size: "200x120"
+      row :image do |_ad|
+        image_tag url_for(service.image), size: '200x120'
       end
       row :rating
-
     end
     active_admin_comments
   end
-
-
 end

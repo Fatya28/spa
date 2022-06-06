@@ -8,13 +8,11 @@ class Order < ApplicationRecord
 
   validates :startdate, presence: true
 
-  STATUSES = %i[draft cancel confirm complete]
+  STATUSES = %i[draft cancel confirm complete].freeze
 
   enum status: STATUSES
 
   enum role: %i[client master]
 
   scope :status, ->(status) { where('status = ?', status) }
-
-
 end

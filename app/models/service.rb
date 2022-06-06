@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
+  validates :title, :performed, :description, :introduction, :image, presence: true
+
   has_one_attached :image, dependent: :destroy
 
   has_many :orders, dependent: :restrict_with_exception

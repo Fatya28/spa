@@ -2,11 +2,11 @@
 
 class ServicesController < ApplicationController
   def index
-    if params[:category_id].present?
-      @services = Service.all.where("category_id = ?", params[:category_id]).order(rating: :desc)
-    else
-      @services = Service.all.order(rating: :desc)
-    end
+    @services = if params[:category_id].present?
+                  Service.all.where('category_id = ?', params[:category_id]).order(rating: :desc)
+                else
+                  Service.all.order(rating: :desc)
+                end
     @categories = Category.all
   end
 
