@@ -1,25 +1,27 @@
 <% provide(:title, "Masters") %>
-<div class="container featurette-divider">
-<div class="row ">
-  <% @masters.each do |master|%>
+<div class="featurette-divider">
+  <h2 class="text-center">Our masters</h2>
+  <div class="row p-5 mx-auto">
+    <% @masters.each do |master|%>
 
-    <div class="col-xl-2 col-md-3 col-sm-6 m-2 mx-2">
-      <%= link_to master_path(master), class: "text-decoration-none text-dark" do %>
-      <div class="card text-center p-2">
-        <%= get_image(master.id, 140)%>
-        <span><%= master.name %></span>
-        <p>
-          <% master.fill_stars.times do %>
-            <i class="bi bi-star-fill"></i>
-          <% end %>
-          <% master.blank_stars.times do %>
-            <i class="bi bi-star mx"></i>
-          <% end %>
-          <br>
-          <i class="bi bi-chat-quote mx-1"></i><%= master.reviews.unblock.count %>
-        </p>
-      </div><% end %>
-    </div>
-  <% end %>
+      <div class="col-xl-2 col-md-3 col-sm-6 m-2 mx-3 text-center">
+        <%= link_to master_path(master), class: "text-decoration-none text-dark" do %>
+          <div class="card text-center p-2">
+            <%= get_image(master.id, 140)%>
+            <span><%= master.name %></span>
+            <p>
+              <% master.fill_stars.times do %>
+                <i class="bi bi-star-fill"></i>
+              <% end %>
+              <% master.blank_stars.times do %>
+                <i class="bi bi-star mx"></i>
+              <% end %>
+              <br>
+              <i class="bi bi-chat-quote mx-1"></i><%= master.reviews.unblock.count %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

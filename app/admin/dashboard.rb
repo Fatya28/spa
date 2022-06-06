@@ -74,7 +74,7 @@ ActiveAdmin.register_page 'Dashboard' do
               th 'rating'
               th 'order'
             end
-            Review.fresh.last(5).map do |review|
+            Review.not_unblock.last(5).map do |review|
               tr do
                 td link_to(review.id, admin_review_path(review))
                 td review.comment
