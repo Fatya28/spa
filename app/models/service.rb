@@ -12,5 +12,4 @@ class Service < ApplicationRecord
 
   enum performed: [:'on the coach', :'on the mat']
   enum duration: %i[1h 1.5h 2h]
-
 end

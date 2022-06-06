@@ -7,7 +7,7 @@ class Review < ApplicationRecord
 
   enum status: %i[fresh unblock block]
 
-  after_update :return_changes, :update_rating, if: proc { |review| review.unblock? }
+  after_update :return_changes, :update_rating # , if: proc { |review| review.unblock? }
   before_destroy :return_changes
   after_destroy :update_rating
 
@@ -20,7 +20,8 @@ class Review < ApplicationRecord
 
   def update_rating
     @changes.each do |value|
-      new_rating = value.reviews.average(:rating)
+      new_rating = value.reviews.unblock.average(:rating)
+      new_rating ||= 0
       value.update(rating: new_rating)
     end
   end
