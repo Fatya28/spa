@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Service do
   permit_params :title, :description, :price, :performed,
-                :category_id, :introduction
+                :category_id, :introduction, :image
 
   index do
     selectable_column

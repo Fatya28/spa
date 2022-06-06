@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
-  validates :title, :performed, :description, :introduction, presence: true
+  validates :title, :performed, :description, :introduction, :image, presence: true
+  validates :title, uniqueness: true
 
   has_one_attached :image, dependent: :destroy
 
@@ -11,4 +12,5 @@ class Service < ApplicationRecord
 
   enum performed: [:'on the coach', :'on the mat']
   enum duration: %i[1h 1.5h 2h]
+
 end
