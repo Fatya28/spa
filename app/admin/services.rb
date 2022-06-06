@@ -16,6 +16,7 @@ ActiveAdmin.register Service do
     column :orders do |service|
       service.orders.count
     end
+    column :rating
     actions
   end
 
@@ -51,6 +52,8 @@ ActiveAdmin.register Service do
       row :image do |ad|
         image_tag url_for(service.image), size: "200x120"
       end
+      row :rating
+
     end
     active_admin_comments
   end

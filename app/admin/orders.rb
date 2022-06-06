@@ -28,9 +28,6 @@ ActiveAdmin.register Order do
 
   form do |f|
     f.inputs do
-      f.input :service_id
-      f.input :user_id
-      f.input :master_id
       f.input :status
     end
     f.actions

@@ -5,7 +5,14 @@
       <div class="col-10">
         <span class="fw-bold fs-4"><%= @service.title %></span>
         <br>
-        <a href="#reviews">
+          <% @service.fill_stars.times do %>
+            <i class="bi bi-star-fill"></i>
+          <% end %>
+          <% @service.blank_stars.times do %>
+            <i class="bi bi-star"></i>
+          <% end %>
+
+        <a href="#reviews" class="mx-2">
           <i class="bi bi-pencil-square"></i>
           <%= pluralize(@service.reviews.unblock.count, 'review') %>
         </a>

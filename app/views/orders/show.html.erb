@@ -1,6 +1,6 @@
 <% provide(:title, "Order ##{@order.id}") %>
 <div class="row featurette-divider">
-  <div class="text-dark col-xl-3 col-lg-4 col-sm-6">
+  <div class="col-xl-3 col-lg-4 col-md-9 mx-3">
     <span class="fw-bold fs-4"> Order #<%= @order.id %></span>
     <br>
     <div class="my-2">
@@ -24,8 +24,8 @@
         <%= get_image(@order.user.id)%>
         <%= @order.user.name.capitalize %>
       <% else %>
-        <%= get_image(@order.master.id)%>
-        <%= @order.master.name.capitalize %>
+        <%= get_image(@order.master.id) %>
+        <%= link_to @order.master.name.capitalize, master_path(@order.master.id) %>
       <% end %>
     </p>
 
@@ -34,13 +34,13 @@
     <% end %>
 
   </div>
-  <div class="col-6">
+  <div class="col-lg-4 col-md-9">
     <% if @order.review.present? %>
       <%= render @order.review %>
     <% end %>
 
     <% if @order.complete? && @order.review.nil? %>
-      <h2>Add a review:</h2>
+      <h4 class="my-1">Add a review:</h4>
       <%= render 'reviews/form' %>
     <% end %>
 

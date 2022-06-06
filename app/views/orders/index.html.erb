@@ -38,7 +38,7 @@
                 <%= order.user.name.capitalize %>
               <% else %>
                 <%= get_image(order.master.id)%>
-                <%= order.master.name.capitalize %>
+                <%= link_to order.master.name.capitalize, master_path(order.master.id) %>
               <% end %>
             </p>
           </td>

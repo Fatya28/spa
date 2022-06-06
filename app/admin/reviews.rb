@@ -5,10 +5,13 @@ ActiveAdmin.register Review do
   index do
     selectable_column
     id_column
-    column :rating
-    column :order_id
+    column :order
+    column :service do |review|
+      link_to Service.find(review.order.service_id).title, admin_service_path(review.order.service_id)
+    end
     column :status
     column :comment
+    column :rating
     actions
   end
 

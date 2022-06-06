@@ -12,7 +12,7 @@
         <% if current_user.birthday.nil? %>
           No data
         <% else %>
-          <%= current_user.birthday %>
+          <%= current_user.birthday.strftime('%d.%m.%Y') %>
         <% end %>
         <% if current_user.master? %>
           <% current_user.description %>

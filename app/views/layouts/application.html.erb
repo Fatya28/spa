@@ -50,9 +50,7 @@
                   <%= get_image(current_user.id)%>
                 </a>
                 <ul class="dropdown-menu text-small mx-3" aria-labelledby="dropdownUser1">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><%= link_to "Profile", profile_path, class: "mx-3" %></li>
+                  <li><%= link_to "Profile", profile_path, class: "mx-4" %></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
                     <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-dark mx-3" %>

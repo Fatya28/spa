@@ -2,7 +2,7 @@
 
 class MastersController < ApplicationController
   def index
-    @masters = User.master
+    @masters = User.master.order(rating: :desc)
   end
 
   def show

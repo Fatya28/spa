@@ -29,7 +29,6 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
       f.input :role, selected: :master
-      f.input :avatar, as: :file
     end
     f.actions
   end
