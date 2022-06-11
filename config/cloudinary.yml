@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: lavenderspa
+  api_key: '798784371381961'
+  api_secret: X0-wp7zcqSeRA9nWInEu75Fklko
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: lavenderspa
+  api_key: '798784371381961'
+  api_secret: X0-wp7zcqSeRA9nWInEu75Fklko
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: lavenderspa
+  api_key: '798784371381961'
+  api_secret: X0-wp7zcqSeRA9nWInEu75Fklko
+  enhance_image_tag: true
+  static_file_support: false
