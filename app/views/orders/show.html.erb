@@ -1,23 +1,23 @@
-<% provide(:title, "Order ##{@order.id}") %>
+<% provide(:title, "Заказ ##{@order.id}") %>
 <div class="row featurette-divider">
   <div class=" col-lg-2 col-md-9 mx-3">
-    <span class="fw-bold fs-4"> Order #<%= @order.id %></span>
+    <span class="fw-bold fs-4"> Заказ #<%= @order.id %></span>
     <br>
     <div class="my-2">
-      <span class="fw-bold mx-auto">Title: </span>
+      <span class="fw-bold mx-auto">Наименование: </span>
       <%= link_to @order.service.title, service_path(@order.service_id) %>
     </div>
 
     <div class="my-2">
-      <span class="fw-bold mx-auto my-3">Price: </span><%= number_to_currency(@order.service.price) %>
+      <span class="fw-bold mx-auto my-3">Цена: </span><%= number_to_currency(@order.service.price) %>
     </div>
 
     <div class="my-2">
-      <span class="fw-bold mx-auto my-3">Status: </span><%= @order.status.capitalize %>
+      <span class="fw-bold mx-auto my-3">Статус: </span><%= Order::STATUSES.select {|key, value| key == @order.status.to_sym }.values.first.try(:capitalize) %>
     </div>
 
     <div class="my-2">
-      <span class="fw-bold mx-auto my-3">Date: </span><%= @order.startdate.strftime('%a, %B %-d') %>
+      <span class="fw-bold mx-auto my-3">Дата: </span><%= l @order.startdate, format: '%A, %-d %B' %>
     </div>
     <p>
       <% if current_user.master? %>
@@ -30,7 +30,7 @@
     </p>
 
     <% if @order.draft? && current_user.client? %>
-      <%= button_to 'Cancel order', update_status_order_path(status: :cancel), method: :patch, class: "btn btn-sm btn-outline-dark my-sm-1" %>
+      <%= button_to 'Отменить заказ', update_status_order_path(status: :cancel), method: :patch, class: "btn btn-sm btn-outline-dark my-sm-1" %>
     <% end %>
 
   </div>
@@ -40,7 +40,7 @@
     <% end %>
 
     <% if @order.complete? && @order.review.nil? %>
-      <h4 class="my-1">Add a review:</h4>
+      <h4 class="my-1">Оставить отзыв:</h4>
       <%= render 'reviews/form' %>
     <% end %>
 

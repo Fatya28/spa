@@ -5,7 +5,9 @@ class Review < ApplicationRecord
 
   validates :rating, presence: true
 
-  enum status: %i[fresh unblock block]
+  STATUSES = { :fresh => "Новый", :unblock => "Опубликован",  :block => "Заблокирован"}
+
+  enum status: STATUSES.keys.freeze
 
   after_update :return_changes, :update_rating # , if: proc { |review| review.unblock? }
   before_destroy :return_changes

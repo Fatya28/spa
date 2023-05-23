@@ -1,36 +1,34 @@
-<% provide(:title, "My orders") %>
+<% provide(:title, "Мои заказы") %>
 <div class="featurette-divider col-xl-6 col-md-9 col-sm-12 mx-auto">
-  <%= link_to 'All', orders_path, class: "btn btn-dark mr-2" %>
-  <% Order::STATUSES.each do |status| %>
-    <%= link_to status.capitalize, orders_path(status: status), class: "btn btn-dark mx-2" %>
+  <%= link_to 'Все', orders_path, class: "btn btn-dark mr-2" %>
+  <% Order::STATUSES.values.each do |status| %>
+    <%= link_to status.capitalize, orders_path(status: Order::STATUSES.key(status).to_s), class: "btn btn-dark mx-2" %>
   <% end %>
   <table class="table table-hover caption-top">
-    <caption>My orders (<%= @orders.count %>)</caption>
+    <caption>Мои заказы (<%= @orders.count %>)</caption>
     <%= @status %>
     <thead>
       <tr>
-        <th scope="col"></th>
         <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Price</th>
-        <th scope="col">Status</th>
-        <th scope="col">Date</th>
+        <th scope="col">Заголовок</th>
+        <th scope="col">Стоимость</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Дата</th>
         <% if current_user.master? %>
-          <th scope="col">Client</th>
+          <th scope="col">Клиент</th>
         <% else %>
-          <th scope="col">Master</th>
+          <th scope="col">Мастер</th>
         <% end %>
       </tr>
     </thead>
     <tbody>
       <% @orders.each.with_index do |order, i| i+=1 %>
         <tr>
-          <th scope="row""><%= i %></th>
-          <td><%= link_to order.id, order_path(order.id) %></td>
+          <th scope="row"><%= link_to order.id, order_path(order.id) %></td></th>
           <td><%= link_to order.service.title, service_path(order.service.id) %></td>
           <td><%= number_to_currency(order.service.price) %></td>
-          <td><%= order.status.capitalize %></td>
-          <td><%= order.startdate.strftime('%a, %B %-d') %></td>
+          <td> <%= Order::STATUSES.select {|key, value| key == order.status.to_sym }.values.first.try(:capitalize) %></td>
+          <td><%= l order.startdate, format: '%A, %-d %B' %></td>
           <td>
             <p>
               <% if current_user.master? %>

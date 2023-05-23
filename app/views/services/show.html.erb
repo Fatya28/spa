@@ -11,18 +11,16 @@
           <% @service.blank_stars.times do %>
             <i class="bi bi-star"></i>
           <% end %>
-
-        <a href="#reviews" class="mx-2">
-          <i class="bi bi-pencil-square"></i>
-          <%= pluralize(@service.reviews.unblock.count, 'review') %>
-        </a>
+        <br>
+        <i>Всего отзывов: <%= @service.reviews.unblock.count %>
+        </i>
 
       </div>
       <div class="col-4 text-end">
         <% if current_user.nil? %>
-          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-dark my-sm-1" %>
+          <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "btn btn-dark my-sm-1" %>
         <% elsif  current_user.client? %>
-          <%= link_to 'Order', new_service_order_path(@service), class: "btn btn-dark my-sm-1" %>
+          <%= link_to 'Заказать', new_service_order_path(@service), class: "btn btn-dark my-sm-1" %>
         <% end %>
       </div>
     </div>
@@ -34,8 +32,8 @@
       </div>
 
       <div class="col-lg-6 col-md-12">
-        <span class="fw-bold mx-auto">Performed: </span><%= @service.performed %><br>
-        <span class="fw-bold mx-auto">Price: </span><%= number_to_currency(@service.price) %><br>
+        <span class="fw-bold mx-auto">Выполенение: </span><%= Service::PERFOMED.select {|key, value| key == @service.performed }.values.first %><br>
+        <span class="fw-bold mx-auto">Цена: </span><%= number_to_currency(@service.price) %><br>
         <p class="my-3"><%= @service.introduction %></p>
       </div>
     </div>

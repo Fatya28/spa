@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = if params[:status].present?
-                current_user.orders.status(Order::STATUSES.index(params[:status].to_sym))
+                current_user.orders.status(Order::STATUSES.values.index(params[:status].to_sym))
               else
                 current_user.orders.order(:startdate)
               end
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def update_status
     @order = Order.find(params[:id])
     @order.update(status: params[:status])
-    redirect_to @order, notice: "Status Changed to #{@order.status}"
+    redirect_to @order, notice: "Статус изменен на '#{@order.status}'"
   end
 
   def show

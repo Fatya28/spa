@@ -26,13 +26,13 @@ ActiveAdmin.register_page 'Dashboard' do
 
     columns do
       column do
-        panel 'New Orders' do
+        panel 'Новые заказы' do
           table do
             thead do
               th '#'
-              th 'status'
-              th 'master'
-              th 'user'
+              th 'Статус'
+              th 'Мастер'
+              th 'Клиент'
             end
             Order.draft.last(5).map do |order|
               tr do
@@ -47,12 +47,12 @@ ActiveAdmin.register_page 'Dashboard' do
       end
 
       column do
-        panel 'New Users' do
+        panel 'Новые пользователи' do
           table do
             thead do
               th '#'
-              th 'name'
-              th 'email'
+              th 'Имя'
+              th 'Электронный адрес'
             end
             User.client.last(5).map do |user|
               tr do
@@ -66,13 +66,13 @@ ActiveAdmin.register_page 'Dashboard' do
       end
 
       column do
-        panel 'New Reviews' do
+        panel 'Новые отзывы' do
           table do
             thead do
               th '#'
-              th 'comment'
-              th 'rating'
-              th 'order'
+              th 'Комментарий'
+              th 'Рейтинг'
+              th 'Заказ'
             end
             Review.not_unblock.last(5).map do |review|
               tr do

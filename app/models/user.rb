@@ -12,7 +12,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum role: %i[client master]
+  ROLES = { :client => "Клиент", :master => "Мастер" }
+  enum role: ROLES.keys.freeze
 
   after_initialize :set_default_role, if: :new_record?
 

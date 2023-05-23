@@ -82,3 +82,5 @@ end
 
 gem 'bootstrap-datepicker-rails'
 gem 'cloudinary'
+
+gem 'rails-i18n'

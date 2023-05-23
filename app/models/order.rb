@@ -8,9 +8,9 @@ class Order < ApplicationRecord
 
   validates :startdate, presence: true
 
-  STATUSES = %i[draft cancel confirm complete].freeze
+  STATUSES =  {:draft => "Черновик", :cancel => "Отменен", :confirm => "Подтвержден", :complete => "Завершен" }
 
-  enum status: STATUSES
+  enum status: STATUSES.keys.freeze
 
   enum role: %i[client master]
 

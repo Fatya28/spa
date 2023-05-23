@@ -10,6 +10,8 @@ class Service < ApplicationRecord
   has_many :reviews, through: :orders, dependent: :restrict_with_exception
   belongs_to :category
 
-  enum performed: [:'on the coach', :'on the mat']
+  PERFOMED =  { 'on the coach' => "на кушетке с нанесением натурального арома-масла", 'on the mat' => "на мате в специальном хлопковом костюме" }
+
+  enum performed: PERFOMED.keys.freeze
   enum duration: %i[1h 1.5h 2h]
 end

@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col">
             <span class="fs-3 fw-bold"><%= @master.name.capitalize %></span>
-            <h6 class="my-2">Spa master</h6>
+            <h6 class="my-2">Мастер</h6>
           </div>
           <div class="col text-end">
             <% @master.fill_stars.times do %>
@@ -33,7 +33,7 @@
                 role="tab"
                 aria-controls="ex2-tabs-1"
                 aria-selected="true"
-                >Information</a
+                >Информация</a
               >
             </li>
             <li class="nav-item" role="presentation">
@@ -45,7 +45,7 @@
                 role="tab"
                 aria-controls="ex2-tabs-2"
                 aria-selected="false"
-                > Reviews(<%= @master.reviews.unblock.count %>)</a
+                > Отзывы(<%= @master.reviews.unblock.count %>)</a
               >
             </li>
           </ul>

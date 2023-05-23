@@ -28,6 +28,12 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  active_admin:
+    new_model:
+  active_admin:
+    resources:
+      offer: # Registered resource
+        new_model: 'Make an Offer' # new action item
+        edit_model: 'Change Offer' # edit action item
+        delete_model: 'Cancel Offer' # delete action item
